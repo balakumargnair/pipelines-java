@@ -7,16 +7,26 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-16.04'
+  name: EYC Pipeline
 
+variables:
+  - group: ci-variable-group
+  - name: IMAGE_NAME
+    value: eycomply-worker
+  - name: BASE_IMAGE_NAME
+    value: eyc-app-worker 
+ 
 steps:
-- task: Maven@3
+- task: SSH@0
+  displayName: 'Run shell commands on remote machine'
   inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+    sshEndpoint: 'EYC-Devops-Server'
+    commands: 'echo $HOSTNAME'
+
+- script: |
+    echo 'starting script execution'
+	  echo ${IMAGE_NAME} 
+	  echo ${ENV} 
+	  echo ${PORTAL} 
+	  echo ${BASE_IMAGE_NAME}
+  displayName: 'echo variables'
