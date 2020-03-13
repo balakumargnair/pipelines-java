@@ -24,9 +24,10 @@ steps:
     commands: 'echo $HOSTNAME'
 
 - script: |
-    echo 'starting script execution'
-	  echo ${IMAGE_NAME} 
-	  echo ${ENV} 
-	  echo ${PORTAL} 
-	  echo ${BASE_IMAGE_NAME}
+    mkdir -p ./packages && cd ./packages
+    echo starting script execution'
+    echo ${IMAGE_NAME} 
+    echo ${ENV} 
+    echo ${PORTAL} 
+    echo ${BASE_IMAGE_NAME}
   displayName: 'echo variables'
