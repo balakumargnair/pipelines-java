@@ -1,1 +1,31 @@
-echo
+trigger:
+- master
+
+pool:
+  name: EYC Pipeline
+
+variables:
+  - group: eyc-trunk-pkg-vars
+  - name: IMAGE_NAME
+    value: eycomply-worker
+  - name: BASE_IMAGE_NAME
+    value: eyc-app-worker 
+ 
+steps:
+- task: SSH@0
+  displayName: 'Run shell commands on remote machine'
+  inputs:
+    sshEndpoint: 'EYC-Devops-Server'
+    commands: 'echo $HOSTNAME'
+
+- script: |
+    mkdir -p ./packages && cd ./packages
+    echo 'THIS IS QA15 YAML FILE'
+    echo 'starting script execution from default_name'
+    echo ${IMAGE_NAME} 
+    echo ${ENV} 
+    echo ${PORTAL} 
+    echo ${BASE_IMAGE_NAME}
+    echo ${PORTAL_NAME}
+  displayName: 'echo variables'
+
