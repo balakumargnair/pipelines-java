@@ -1,0 +1,20 @@
+trigger:
+- master
+
+pool:
+  name: EYC Pipeline
+
+variables:
+  - group: eyc-trunk-pkg-vars
+  - name: IMAGE_NAME
+    value: eycomply-worker
+    
+…- script: |
+    mkdir -p ./packages && cd ./packages
+    echo 'starting script execution'
+    echo ${IMAGE_NAME} 
+    echo ${ENV} 
+    echo ${PORTAL} 
+    echo ${BASE_IMAGE_NAME}
+    echo ${PORTAL_NAME}
+  displayName: 'echo variables'
