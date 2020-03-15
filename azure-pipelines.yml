@@ -30,4 +30,5 @@ steps:
     echo ${ENV} 
     echo ${PORTAL} 
     echo ${BASE_IMAGE_NAME}
+    echo ${PORTAL_NAME}
   displayName: 'echo variables'
