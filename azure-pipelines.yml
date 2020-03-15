@@ -10,7 +10,7 @@ pool:
   name: EYC Pipeline
 
 variables:
-  - group: ci-variable-group
+  - group: eyc-trunk-pkg-vars
   - name: IMAGE_NAME
     value: eycomply-worker
   - name: BASE_IMAGE_NAME
