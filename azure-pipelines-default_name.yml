@@ -22,7 +22,7 @@ steps:
     echo 'THIS IS DEFAULT NAME YAML FILE'
     echo 'starting script execution from default_name'
     echo " "
-    echo 'Pipeline.Workspace is ' $(Pipeline.Workspace)
+    echo 'Pipeline.Workspace is  ' $(Pipeline.Workspace)
     echo " "
     echo ${IMAGE_NAME} 
     echo $(Agent.BuildDirectory)
