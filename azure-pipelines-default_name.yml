@@ -30,4 +30,5 @@ steps:
     echo ${PORTAL} 
     echo ${BASE_IMAGE_NAME}
     echo ${PORTAL_NAME}
+    echo system.defaultworkingdirectory is $(system.defaultworkingdirectory)
   displayName: 'echo variables'
